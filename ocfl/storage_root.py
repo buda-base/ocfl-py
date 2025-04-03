@@ -20,6 +20,7 @@ from .validation_logger import ValidationLogger
 # Specific layouts
 from .layout_0002_flat_direct import Layout_0002_Flat_Direct
 from .layout_0003_hash_and_id_n_tuple import Layout_0003_Hash_And_Id_N_Tuple
+from .layout_bdrc_etexts import Layout_BDRC_etexts
 from .layout_nnnn_flat_quoted import Layout_NNNN_Flat_Quoted
 from .layout_nnnn_tuple_tree import Layout_NNNN_Tuple_Tree
 from .layout_nnnn_uuid_quadtree import Layout_NNNN_UUID_Quadtree
@@ -35,6 +36,8 @@ def _get_layout(layout_name=None):
         return Layout_0002_Flat_Direct()
     if layout_name in ("0003-hash-and-id-n-tuple-storage-layout", "0003"):
         return Layout_0003_Hash_And_Id_N_Tuple()
+    if layout_name == "bdrc_etexts":
+        return Layout_BDRC_etexts()
     if layout_name in ("nnnn-flat-quoted-storage-layout", "flat-quoted"):
         return Layout_NNNN_Flat_Quoted()
     if layout_name == "nnnn-tuple-tree":
@@ -65,14 +68,16 @@ class StorageRoot():
         self.layout_file = "ocfl_layout.json"
         self.registered_extensions = [
             "0002-flat-direct-storage-layout",
-            "0003-hash-and-id-n-tuple-storage-layout"
+            "0003-hash-and-id-n-tuple-storage-layout",
+            "bdrc_etexts"
         ]
         self.supported_layouts = [
             "0002-flat-direct-storage-layout",
             "0003-hash-and-id-n-tuple-storage-layout",
             "nnnn-flat-quoted-storage-layout",
             "nnnn-tuple-tree",
-            "nnnn-uuid-quadtree"
+            "nnnn-uuid-quadtree",
+            "bdrc_etexts"
         ]
         #
         self.root_fs = None
